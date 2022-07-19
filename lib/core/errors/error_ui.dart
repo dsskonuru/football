@@ -1,7 +1,8 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:football/core/errors/failures.dart';
 
 import 'package:lottie/lottie.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 Widget handleErrorUI(Object err, StackTrace? st) {
   debugPrint(err.toString());
@@ -13,8 +14,13 @@ Widget handleErrorUI(Object err, StackTrace? st) {
         height: 200,
         width: 200,
       ),
-      const Text(
-        "No connection, but you can still access bookmarked posts",
+      Text(
+        "No connection, please try again",
+        style: TextStyle(
+          fontSize: 20.sp,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
       ),
     ];
   } else {
@@ -24,15 +30,22 @@ Widget handleErrorUI(Object err, StackTrace? st) {
         height: 200,
         width: 200,
       ),
-      const Text(
+      Text(
         "Something went wrong, please try again later",
+        style: TextStyle(
+          fontSize: 20.sp,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
       ),
     ];
   }
-  return Center(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: errorWidgets,
+  return Scaffold(
+    body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: errorWidgets,
+      ),
     ),
   );
 }

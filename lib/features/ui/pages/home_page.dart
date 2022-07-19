@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:football/core/errors/error_ui.dart';
 import 'package:football/features/data/models/matches.dart';
 import 'package:football/features/ui/providers/team_provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -16,8 +17,6 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final AsyncValue<Team> _asyncTeam = ref.watch(teamProvider);
 
-    // return OrientationBuilder(
-    //   builder: (context, orientation) {
     return _asyncTeam.when(
       data: (team) {
         return Scaffold(
@@ -26,9 +25,9 @@ class HomePage extends ConsumerWidget {
             bottomOpacity: 0.75,
             title: Text(
               team.name!,
-              style: TextStyle(
+              style: GoogleFonts.sourceSansPro(
                 fontSize: 24.sp,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w400,
               ),
             ),
             elevation: 12.0,
@@ -41,7 +40,6 @@ class HomePage extends ConsumerWidget {
                 image: DecorationImage(
                   colorFilter: ColorFilter.mode(
                     Colors.white.withOpacity(0.1),
-                    // Colors.black.withOpacity(0.5),
                     BlendMode.dstATop,
                   ),
                   image: NetworkImage(team.crest!),
@@ -53,15 +51,27 @@ class HomePage extends ConsumerWidget {
                   children: [
                     Text(
                       "Venue: ${team.venue!}",
-                      style: Theme.of(context).textTheme.subtitle1,
+                      style: GoogleFonts.sourceSansPro(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 0.15,
+                      ),
                     ),
                     Text(
                       team.address!,
-                      style: Theme.of(context).textTheme.subtitle1,
+                      style: GoogleFonts.sourceSansPro(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 0.15,
+                      ),
                     ),
                     Text(
                       "Founded in ${team.founded!.toString()}",
-                      style: Theme.of(context).textTheme.subtitle1,
+                      style: GoogleFonts.sourceSansPro(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 0.15,
+                      ),
                     ),
                     const SizedBox(height: 20.0),
                     Linkify(
@@ -83,7 +93,11 @@ class HomePage extends ConsumerWidget {
                         }
                       },
                       text: team.website!,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: GoogleFonts.amaranth(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 0.5,
+                      ),
                     )
                   ],
                 ),
